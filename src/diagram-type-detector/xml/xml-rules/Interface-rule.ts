@@ -1,8 +1,8 @@
-import AbstractRule from '../AbstractRule';
-import { DiagramType } from '../DiagramType';
+import AbstractRule from '../../core/AbstractRule';
+import { DiagramType } from '../../core/DiagramType';
 
 export default class InterfaceRule extends AbstractRule {
-    protected ruleType = DiagramType.Interface
+    public readonly ruleType = DiagramType.Interface
 
     constructor() {
         super("/<diagram\\s+type=\"interface\"/");

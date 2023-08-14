@@ -1,8 +1,8 @@
-import AbstractRule from '../AbstractRule';
-import { DiagramType } from '../DiagramType';
+import AbstractRule from '../../core/AbstractRule';
+import { DiagramType } from '../../core/DiagramType';
 
 export default class EntityRelationshipRule extends AbstractRule {
-    protected ruleType = DiagramType.ERD
+    public readonly ruleType = DiagramType.ERD
 
     constructor() {
         super(" /<diagram\\s+type=\"erd\"/");
