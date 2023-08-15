@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { DiagramType } from '../core/DiagramType';
-import AbstractDetector from '../core/AbstractDetector';
-import ClassRule from './xml-rules/Class-rule';
-import InterfaceRule from './xml-rules/Interface-rule';
-import EntityRelationshipRule from './xml-rules/Entity-relationship-rule';
+import Detector from '../core/Detector';
+import ClassRule from '../xml/xml-rules/Class-rule';
+import InterfaceRule from '../xml/xml-rules/Interface-rule';
+import EntityRelationshipRule from '../xml/xml-rules/Entity-relationship-rule';
 
 @Injectable({
 
 })
-export default class XMLDetectorService extends AbstractDetector {
+export default class XmlDetectorService extends Detector {
     protected rules = [new ClassRule(), new InterfaceRule(), new EntityRelationshipRule()];
 
     public constructor() {

@@ -4,7 +4,7 @@ import { DiagramType } from './DiagramType';
 @Injectable({
     scope: Scope.DEFAULT,
 })
-export default abstract class AbstractRule {
+export default abstract class Rule {
     public readonly abstract ruleType: DiagramType
     protected regexRule: string
 

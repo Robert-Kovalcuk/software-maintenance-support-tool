@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import XMLDetectorService from './XMLDetectorService';
+import XmlDetectorService from './Xml-detector-service';
 
 describe('DetectorService', () => {
-  let service: XMLDetectorService;
+  let service: XmlDetectorService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [XMLDetectorService],
+      providers: [XmlDetectorService],
     }).compile();
 
-    service = module.get<XMLDetectorService>(XMLDetectorService);
+    service = module.get<XmlDetectorService>(XmlDetectorService);
   });
 
   it('should be defined', () => {

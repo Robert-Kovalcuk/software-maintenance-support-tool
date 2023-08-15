@@ -1,8 +1,9 @@
 import { Injectable, PreconditionFailedException } from '@nestjs/common';
 import * as xml2js from 'xml2json';
+import { Parser } from '../core/Parser';
 
 @Injectable()
-export class XmlParserService {
+export class XmlParserService implements Parser<string, object> {
     public parse(data: string): object {
         try {
             return xml2js.toJson(data, {object: true})
