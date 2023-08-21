@@ -1,26 +1,30 @@
-import {
-    Controller,
-    Post,
-    UploadedFile,
-    UseInterceptors,
-} from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
-import { XmlControllerService } from '../services/xml-controller.service';
-import { ParseXmlFilePipeFactory } from '../pipes/pipe-factory';
-import { createResponse, IResponse } from '../core/response-models/IResponse';
+import { Controller, Post, Req, UploadedFile, UseInterceptors } from "@nestjs/common"
+import { FileInterceptor } from "@nestjs/platform-express"
+import { XmlValidationPipeFactory } from "../pipes/pipe-factory"
+import { Request } from "express"
+import { XmlControllerService } from "../services/xml-controller.service"
 
-@Controller('xml')
+@Controller("xml")
 export class XmlController {
-
     public constructor(
-        private controllerService: XmlControllerService
+        private controllerService: XmlControllerService,
     ) {
     }
 
-    @Post('upload')
-    @UseInterceptors(FileInterceptor('file'))
-    public upload(@UploadedFile(ParseXmlFilePipeFactory.isValidXmlPipe()) file: Express.Multer.File): IResponse<string> {
-        this.controllerService.upload(file)
-        return createResponse("response")
+    @Post("detectTypeAndParse")
+    @UseInterceptors(FileInterceptor("file"))
+    public parse(@UploadedFile(XmlValidationPipeFactory.isValidXmlPipe()) file: Express.Multer.File): string {
+        return this.controllerService.detectTypeAndParse(file)
+    }
+
+    @Post("upload")
+    @UseInterceptors(FileInterceptor("file"))
+    public upload(@UploadedFile(XmlValidationPipeFactory.isValidXmlPipe()) file: Express.Multer.File): boolean {
+        return this.controllerService.upload(file)
+    }
+
+    @Post("export")
+    public export(@Req() request: Request): boolean {
+        return this.controllerService.export(request.body)
     }
 }

@@ -1,5 +1,5 @@
-import { Injectable, Scope } from '@nestjs/common'
-import { DiagramType } from './DiagramType';
+import { Injectable, Scope } from "@nestjs/common"
+import { DiagramType } from "./DiagramType"
 
 @Injectable({
     scope: Scope.DEFAULT,
@@ -9,7 +9,7 @@ export default abstract class Rule {
     protected regexRule: string
 
     protected constructor(regexRule: string) {
-        this.regexRule = regexRule;
+        this.regexRule = regexRule
     }
 
     public apply(xmlContent: string): DiagramType | null {

@@ -1,22 +1,14 @@
-import { Injectable, PreconditionFailedException } from '@nestjs/common';
-import * as xml2js from 'xml2json';
-import { Parser } from '../core/Parser';
+import { Injectable } from "@nestjs/common"
+import * as xml2js from "xml2json"
+import XmlParser from "../core/XmlParser"
 
 @Injectable()
-export class XmlParserService implements Parser<string, object> {
-    public parse(data: string): object {
-        try {
-            return xml2js.toJson(data, {object: true})
-        } catch (e) {
-            throw new PreconditionFailedException(e)
-        }
+export class XmlParserService implements XmlParser {
+    public parse(content: Express.Multer.File): string {
+        return xml2js.toJson(content.buffer, {object: false})
     }
 
-    public serialise(data: object): string {
-        try {
-            return xml2js.toXml(JSON.stringify(data));
-        } catch (e) {
-            throw new PreconditionFailedException(e)
-        }
+    public serialise(data: string): string {
+        return xml2js.toXml(JSON.stringify(data));
     }
 }

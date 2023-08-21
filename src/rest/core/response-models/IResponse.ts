@@ -4,6 +4,6 @@ export interface IResponse<T> {
 
 export function createResponse<T>(content: T): IResponse<T> {
     return {
-        content: content
+        content: content,
     }
 }
