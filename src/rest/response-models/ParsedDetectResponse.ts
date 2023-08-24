@@ -4,7 +4,6 @@ export default class ParsedDetectResponse {
     private type: DiagramType | null
     private data: string
 
-
     private constructor(type: DiagramType | null, data: string) {
         this.type = type
         this.data = data

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="ParameterType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="type" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="MethodType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="returnType" type="xs:string"/>
+            <xs:element name="parameters" type="ParameterListType" minOccurs="0"/>
+            <xs:element name="visibility" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AttributeType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="type" type="xs:string"/>
+            <xs:element name="visibility" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ClassType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="abstract" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="extends" type="xs:string" minOccurs="0"/>
+            <xs:element name="attributes" type="AttributeListType"/>
+            <xs:element name="methods" type="MethodListType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Define the lists of elements -->
+    <xs:complexType name="ParameterListType">
+        <xs:sequence>
+            <xs:element name="parameter" type="ParameterType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="MethodListType">
+        <xs:sequence>
+            <xs:element name="method" type="MethodType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AttributeListType">
+        <xs:sequence>
+            <xs:element name="attribute" type="AttributeType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Define the root element -->
+    <xs:element name="classDiagram" type="ClassDiagramType"/>
+
+    <xs:complexType name="ClassDiagramType">
+        <xs:sequence>
+            <xs:element name="classes" type="ClassListType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ClassListType">
+        <xs:sequence>
+            <xs:element name="class" type="ClassType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
