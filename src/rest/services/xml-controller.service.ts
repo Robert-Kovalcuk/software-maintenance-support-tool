@@ -20,7 +20,7 @@ export class XmlControllerService {
         const parsed = this.parser.parse(file)
         const detectedType = this.detector.detect(parsed)
 
-        return ParsedDetectResponse.fromValueString(detectedType, parsed)
+        return ParsedDetectResponse.fromValue(detectedType, parsed).toStringJson()
     }
 
     public export(file: string): any {
