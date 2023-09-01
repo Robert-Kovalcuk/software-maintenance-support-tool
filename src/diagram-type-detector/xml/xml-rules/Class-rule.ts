@@ -1,8 +1,8 @@
 import Rule from "../../core/Rule"
-import { DiagramType } from "../../core/DiagramType"
+import { DiagramTypeEnum } from "../../../domain/diagram-type-enum"
 
 export default class ClassRule extends Rule {
-    public readonly ruleType = DiagramType.Class
+    public readonly ruleType = DiagramTypeEnum.Class
 
     constructor() {
         super("/<diagram\\s+type=\"interface\"/")

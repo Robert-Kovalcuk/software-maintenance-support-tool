@@ -1,8 +1,8 @@
 import Rule from "../../core/Rule"
-import { DiagramType } from "../../core/DiagramType"
+import { DiagramTypeEnum } from "../../../domain/diagram-type-enum"
 
 export default class EntityRelationshipRule extends Rule {
-    public readonly ruleType = DiagramType.ERD
+    public readonly ruleType = DiagramTypeEnum.ERD
 
     constructor() {
         super(" /<diagram\\s+type=\"erd\"/")

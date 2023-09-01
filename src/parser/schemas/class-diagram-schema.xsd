@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="classDiagram"
+           xmlns="classDiagram"
+           elementFormDefault="qualified">
 
     <xs:complexType name="ParameterType">
         <xs:sequence>
@@ -54,19 +57,14 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- Define the root element -->
-    <xs:element name="classDiagram" type="ClassDiagramType"/>
-
     <xs:complexType name="ClassDiagramType">
         <xs:sequence>
-            <xs:element name="classes" type="ClassListType"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="ClassListType">
-        <xs:sequence>
+            <!-- Directly include the <class> elements here -->
             <xs:element name="class" type="ClassType" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
+
+    <!-- Define the root element -->
+    <xs:element name="diagram" type="ClassDiagramType"/>
 
 </xs:schema>
