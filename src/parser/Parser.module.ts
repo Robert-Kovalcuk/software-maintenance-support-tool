@@ -2,7 +2,7 @@ import {Module} from "@nestjs/common"
 import {XmlParserService} from "./services/Xml-parser.service"
 import XmlParser from "./core/XmlParser"
 import Validator from "./validation/validator"
-import {ClassDiagramValidatorService} from "./validation/class-diagram-validator.service"
+import {DiagramValidatorService} from "./validation/diagram-validator-service"
 
 @Module({
     providers: [{
@@ -10,14 +10,14 @@ import {ClassDiagramValidatorService} from "./validation/class-diagram-validator
         useClass: XmlParserService
     }, {
         provide: Validator,
-        useClass: ClassDiagramValidatorService
+        useClass: DiagramValidatorService
     }],
     exports: [{
         provide: XmlParser,
         useClass: XmlParserService
     }, {
         provide: Validator,
-        useClass: ClassDiagramValidatorService
+        useClass: DiagramValidatorService
     }],
 })
 export class ParserModule {

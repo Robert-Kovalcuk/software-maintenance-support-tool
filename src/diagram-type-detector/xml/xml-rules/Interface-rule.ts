@@ -1,10 +1,10 @@
 import Rule from "../../core/Rule"
 import { DiagramTypeEnum } from "../../../domain/diagram-type-enum"
 
-export default class InterfaceRule extends Rule {
-    public readonly ruleType = DiagramTypeEnum.Interface
+export class InterfaceRule extends Rule {
+    public readonly ruleType = DiagramTypeEnum.Interface;
 
     constructor() {
-        super("/<diagram\\s+type=\"interface\"/")
+        super('Interface'); // Regex pattern for interface diagrams
     }
 }

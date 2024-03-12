@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ClassDiagramValidatorService } from './class-diagram-validator.service';
+import { DiagramValidatorService } from './diagram-validator-service';
 
 describe('ClassDiagramValidatorService', () => {
-  let service: ClassDiagramValidatorService;
+  let service: DiagramValidatorService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ClassDiagramValidatorService],
+      providers: [DiagramValidatorService],
     }).compile();
 
-    service = module.get<ClassDiagramValidatorService>(ClassDiagramValidatorService);
+    service = module.get<DiagramValidatorService>(DiagramValidatorService);
   });
 
   it('should be defined', () => {

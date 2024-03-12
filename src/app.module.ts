@@ -5,7 +5,10 @@ import { ApiModule } from "./rest/api.module"
 import { DiagramTypeDetectorModule } from "./diagram-type-detector/Diagram-type-detector.module"
 import { ParserModule } from "./parser/Parser.module"
 import {DomainModule} from "./domain/domain.module"
-import { ClassDiagramValidatorService } from './parser/validation/class-diagram-validator.service';
+import { DiagramValidatorService } from './parser/validation/diagram-validator-service';
+import { MapperModule } from './mapper/mapper.module';
+import { ClassMapperService } from './mapper/class-mapper/class-mapper.service';
+import { DiagramAnalysisModule } from './diagram-analysis/diagram-analysis.module';
 
 @Module({
     imports: [
@@ -16,8 +19,10 @@ import { ClassDiagramValidatorService } from './parser/validation/class-diagram-
         DevtoolsModule.register({
             http: process.env.NODE_ENV !== "production",
         }),
+        MapperModule,
+        DiagramAnalysisModule,
     ],
-    providers: [ClassDiagramValidatorService],
+    providers: [DiagramValidatorService, ClassMapperService],
 })
 export class AppModule {
 }

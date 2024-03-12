@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="InterfaceType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PortType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="interfaceName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DependencyType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="targetComponentName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ComponentType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="ports" type="PortListType" minOccurs="0"/>
+            <xs:element name="interfaces" type="InterfaceListType" minOccurs="0"/>
+            <xs:element name="dependencies" type="DependencyListType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PortListType">
+        <xs:sequence>
+            <xs:element name="port" type="PortType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="InterfaceListType">
+        <xs:sequence>
+            <xs:element name="interface" type="InterfaceType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DependencyListType">
+        <xs:sequence>
+            <xs:element name="dependency" type="DependencyType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ComponentListType">
+        <xs:sequence>
+            <xs:element name="component" type="ComponentType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ComponentDiagramType">
+        <xs:sequence>
+            <xs:element name="components" type="ComponentListType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="componentDiagram" type="ComponentDiagramType"/>
+
+</xs:schema>

@@ -1,5 +1,9 @@
-import Interface from "./interface"
+import Interface from "./interface";
 
-export default interface InterfaceDiagram {
+export default class InterfaceDiagram {
     interfaces: Interface[];
+
+    constructor(interfaces: Interface[]) {
+        this.interfaces = interfaces;
+    }
 }

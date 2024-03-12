@@ -13,6 +13,6 @@ export default abstract class Rule {
     }
 
     public apply(xmlContent: string): DiagramTypeEnum | null {
-        return (new RegExp(this.regexRule)).exec(xmlContent) === null ? this.ruleType : null
+        return (new RegExp(this.regexRule)).exec(xmlContent) === null ? null : this.ruleType
     }
 }

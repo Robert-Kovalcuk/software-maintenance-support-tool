@@ -10,8 +10,6 @@ export class XmlParserService implements XmlParser {
         const result = xml2js.toJson(content.buffer, {object: true})
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        console.log(result)
-        //console.log((((result as object as IDiagram<any>).diagram) as ClassDiagram).classes)
         return xml2js.toJson(content.buffer, {object: false})
     }
 

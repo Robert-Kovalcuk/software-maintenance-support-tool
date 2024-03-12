@@ -1,6 +1,11 @@
-import Method from "./method"
+import Method from "./method";
 
-export default interface Interface {
+export default class Interface {
     name: string;
     methods: Method[];
+
+    constructor(name: string, methods: Method[]) {
+        this.name = name;
+        this.methods = methods;
+    }
 }

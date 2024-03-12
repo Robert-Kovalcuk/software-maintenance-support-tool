@@ -1,10 +1,14 @@
 import Attribute from "./attribute"
 import Method from "./method"
 
-export default interface Clazz {
+export default class Clazz {
     name: string;
-    abstract?: boolean;
-    extends?: string;
     attributes: Attribute[];
     methods: Method[];
+
+    constructor(name: string, attributes: Attribute[], methods: Method[]) {
+        this.name = name;
+        this.attributes = attributes;
+        this.methods = methods;
+    }
 }

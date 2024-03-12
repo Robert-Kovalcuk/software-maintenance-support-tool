@@ -1,5 +1,9 @@
 import Clazz from "./clazz"
 
-export default interface ClassDiagram {
+export default class ClassDiagram {
     classes: Clazz[];
+
+    constructor(classes: Clazz[]) {
+        this.classes = classes;
+    }
 }
